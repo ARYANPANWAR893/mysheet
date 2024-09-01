@@ -12,7 +12,7 @@ MySheet is a secure and intuitive platform for creating, sharing, and collaborat
 - **Sharing & Collaboration:** Multiple users can use the web app to prepare a sheet
 - **Scalable Architecture:** The website is fast and scalable and can be used on a large scale
 
-## Local Setup Instructions (Write for both windows and macos)
+## Local Setup Instructions
 
 Follow these steps to run the project locally
 
