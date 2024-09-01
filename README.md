@@ -21,5 +21,16 @@ Follow these steps to run the project locally
    git clone https://github.com/ARYANPANWAR893/mysheet
    cd mysheet
    ```
+2. **Install Dependencies**
+   ```bash
+   pip install flask
+   pip install flask-sqlalchemy
+   pip install flask-login
+   pip install os
+   ```
+3. **Run the "main.py" file to start the server**
+   ```bash
+   python main.py
+   ```
 
 - **Live Deployment:** [View Deployment](https://mysheet.pythonanywhere.com/)
