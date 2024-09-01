@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{%block title%}Search{%endblock%}
+
+{% block body %}
+
+<style>
+    .line {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.178);
+    height: 60%;
+    padding: 10px 30px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    width: 95%;
+    margin: 20px 0px;
+    margin-top: 0;
+}
+
+.line:hover{
+    background-color: rgba(0, 0, 255, 0.033);
+}
+</style>
+
+<div style="margin-left: 50px;" class="body">
+    <h1 style="font-size: 48px;">Showing Results for "{{query}}"</h1>
+    {% for item in filtered %}
+    <a style="color: black; text-decoration: none;" target="_blank" href="/sheet/{{item.id}}">
+        <div class="line" id="l1">{{IDToName(item.id)}} <div class="firs1">{{IDToEmail(item.owner_id)}}</div>
+        </div>
+    </a>
+    {% endfor %}
+    {% if filtered == [] %}
+    No Such Items
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

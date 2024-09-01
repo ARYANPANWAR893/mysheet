@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%} - My Sheet</title>
+    <script>
+        function popup() {
+            var x = document.getElementById("popup");
+            x.style.display = "flex";
+        }
+        function closeprompt() {
+            console.log("Clicked")
+            var x = document.getElementById("popup");
+            x.style.display = "none";
+        }
+
+        function bar() {
+            var x = document.getElementById("bob");
+            if (x.style.display == "none"){
+                x.style.display = "inline-block"
+            }
+            else{
+                x.style.display = "none"
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+    </style>
+    <style>
+        body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-around;
+            padding: 20px 0px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.068);
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+        }
+
+        .search-bar {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgba(128, 128, 128, 0.078);
+            border: 1px solid rgba(128, 128, 128, 0.592);
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            width: 45vw;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+
+        }
+
+        .new-btn {
+            padding: 13px 30px;
+            font-family: "Kanit", sans-serif;
+            font-weight: 800;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgb(81, 81, 255);
+            color: white;
+            cursor: pointer;
+        }
+
+        .new-btn:hover {
+            transition: 0.5s;
+            background-color: rgb(46, 46, 255);
+        }
+
+        .pfp-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .pfp{
+            padding: 5px;
+            border-radius: 50%;
+            border: 1px solid blue;
+            width: 30px ;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .go {
+            padding: 13px 30px;
+            font-family: "Kanit", sans-serif;
+            font-weight: 800;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgba(128, 128, 128, 0.078);
+            color: black;
+            cursor: pointer;
+        }
+
+        .prompt {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.46);
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .form {
+            width: 30%;
+            background-color: white;
+            border-radius: 13px;
+            padding: 50px;
+            padding-top: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .create-btn {
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: rgb(81, 81, 255);
+            color: white;
+            border: none;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            border-radius: 5px;
+            position: fixed;
+            left: 60%;
+        }
+
+        .input {
+            outline: none;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            margin: 10px;
+            margin-left: 0;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 90%;
+            border: 1px solid rgba(0, 0, 0, 0.236);
+        }
+    </style>
+
+    <div id="bob" style=" border: 2px solid black; border-radius: 5px; z-index: 20; padding: 10px 30px; background-color: white; position: fixed; color: black; text-decoration: none;  right: 60px; top: 10%; display: none;">
+        <a style="color: black; text-decoration: none;" href="/logout">Logout</a>
+    </div>
+
+    <div style="z-index: 10;" id="popup" class="prompt">
+        <div class="form">
+            <button onclick="closeprompt()" style="font-size: 20px;" class="close-btn">x</button>
+            <h2 style="text-align: center;">Create a New Sheet</h2>
+            <br>
+            <form action="/new-sheet" method="post">
+                <label for="">Sheet Name</label><br>
+                <input class="input" type="text" name="sheet-name" placeholder="Name your new sheet"><br>
+                <button class="create-btn" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="logo"><a style="color: black; text-decoration: none;" href="/">MYSHEET</a></div>
+        <div class="search">
+            <form action="/search">
+                <input class="search-bar" name="q" type="text"> <button class="go" type="submit">Go</button>
+            </form>
+        </div>
+        <div class="new">
+            <button onclick="popup()" class="new-btn">New Sheet +</button>
+        </div>
+        <div onclick="bar()" class="pfp">
+            {{user.name[0]}}
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+</body>
+
+</html>

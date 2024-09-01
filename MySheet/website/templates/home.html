@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{%block title%}Home{%endblock%}
+
+{% block body %}
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.sheet {
+    border: 1px solid whitesmoke;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(6, 10%);
+
+}
+
+.line {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.178);
+    height: 60%;
+    padding: 10px 30px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    width: 95%;
+    margin: 20px 0px;
+    margin-top: 0;
+}
+
+.line:hover{
+    background-color: rgba(0, 0, 255, 0.033);
+}
+
+
+</style>
+<br><br>    
+
+    <div style="margin-left: 50px;" class="body">
+        <h1 style="font-size: 48px;">Welcome {{user.name}},</h1>
+        <h2>owned by you</h2>
+        <br>
+        {% for item in owned_items %}
+        <a style="color: black; text-decoration: none;"  target="_blank" href="/sheet/{{item.id}}"><div class="line" id="l1">{{item.name}} <div class="firs1">{{user.email}}</div></div></a>
+        {% endfor %}
+        {% if owned_items == [] %}
+        No Sheets yet
+        {% endif %}
+        <br><br>
+        <h2>shared with you</h2>
+        <br>
+        {% for item in shared_items %}
+        <a style="color: black; text-decoration: none;"  target="_blank" href="/sheet/{{item.id}}"><div class="line" id="l1">{{IDToName(item.id)}} <div class="firs1">{{AcDec(item.access_type)}}</div></div></a>
+        {% endfor %}
+        {% for item in filtered %}
+    <a style="color: black; text-decoration: none;" target="_blank" href="/sheet/{{item.id}}">
+        <div class="line" id="l1">{{IDToName(item.id)}} <div class="firs1">{{IDToEmail(item.owner_id)}}</div>
+        </div>
+    </a>
+    {% endfor %}
+        
+        {% if shared_items == [] %}
+        No Sheets yet.
+        {% endif %}
+    </div>
+
+
+    {% endblock %}

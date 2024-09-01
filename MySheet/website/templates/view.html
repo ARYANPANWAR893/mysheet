@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2 style="margin: 20px 50px;">{{sheet.name}}</h2>
+
+<div style="margin: 20px 50px; width: 90%;">
+    {{content|safe}}
+</div>
+
+{% endblock %}
